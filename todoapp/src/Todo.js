@@ -18,7 +18,7 @@ class Todo extends Component {
   render() {
     return (
       <li
-        onClick={() => this.onClick()}
+        onClick={(e) => this.onClick(e)}
         style={{textDecoration: this.state.done ? 'line-through' : 'none'}}>
         <p>
           {this.props.id}: {this.props.text}

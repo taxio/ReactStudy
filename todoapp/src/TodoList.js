@@ -1,14 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Todo from './Todo';
+import { appContext } from './Store';
 
-class TodoList extends Component {
-  render() {
-    const todos = this.props.todos.map(todo => (
-      <Todo key={todo.id} {...todo} />
-    ));
-
-    return <ul>{todos}</ul>;
-  }
-}
+const TodoList = () => (
+  <appContext.Consumer>
+    {({ state, actions }) => (
+      <ul>
+        {state.todos.map(todo => (
+          <Todo key={todo.id} todo={todo}/>
+        ))}
+      </ul>
+    )}
+  </appContext.Consumer>
+);
 
 export default TodoList;
